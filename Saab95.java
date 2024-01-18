@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public abstract class Saab95 extends Car{
+public class Saab95 extends Car{
 
     public boolean turboOn;
     
@@ -32,12 +32,32 @@ public abstract class Saab95 extends Car{
     }
 
     // TODO fix this method according to lab pm
-    private void gas(double amount){
-        incrementSpeed(amount);
+    private void gas(double amount) {
+        if (amount >= 0 && amount <= 1) {
+            incrementSpeed(amount);
+            double speed = getCurrentSpeed();
+            currentSpeed = Math.min(speed,enginePower);
+            if(currentSpeed < 0){
+                currentSpeed = Math.max(speed,0);
+            }
+        }
+        else{
+            System.out.println("Invalid gas range");
+        }
     }
 
     // TODO fix this method according to lab pm
-    private void brake(double amount){
-        decrementSpeed(amount);
+    private void brake(double amount) {
+        if (amount >= 0 && amount <= 1) {
+            incrementSpeed(amount);
+            double speed = getCurrentSpeed();
+            currentSpeed = Math.min(speed,enginePower);
+            if(currentSpeed < 0){
+                currentSpeed = Math.max(speed,0);
+            }
+        }
+        else{
+            System.out.println("Invalid gas range");
+        }
     }
 }
