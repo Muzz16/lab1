@@ -3,8 +3,8 @@ import java.awt.*;
 public class Car {
     private final int nrDoors; // Number of doors on the car
     public final double enginePower; // Engine power of the car
-    private Color color; // Color of the car
-    private final String modelName; // The car model name
+    public Color color; // Color of the car
+    public final String modelName; // The car model name
     public double currentSpeed; // The current speed of the car
 
     public Car(int nrDoors, double enginePower, String modelName, Color color){
@@ -30,7 +30,7 @@ public class Car {
     }
 
     public void setColor(Color clr){
-        this.color = clr;
+        color = clr;
     }
 
     public void startEngine(){
@@ -40,4 +40,6 @@ public class Car {
     public void stopEngine(){
         currentSpeed = 0;
     }
+
+
 }
