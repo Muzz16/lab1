@@ -12,14 +12,20 @@ public class Volvo240Test {
     }
     @Test
     public void speedFactor() {
+        double i = volvo.speedFactor();
+        assertEquals(1.25,i,0.001);
     }
 
     @Test
     public void incrementSpeed() {
+        volvo.decrementSpeed(0);
+        assertEquals(0,volvo.getCurrentSpeed(),0.001);
     }
 
     @Test
     public void decrementSpeed() {
+        volvo.decrementSpeed(0);
+        assertEquals(0,volvo.getCurrentSpeed(),0.001);
     }
 
     @Test
