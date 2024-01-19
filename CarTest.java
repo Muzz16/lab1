@@ -26,6 +26,7 @@ public class CarTest {
 
     @Test
     public void getCurrentSpeed() {
+        testCar.stopEngine();
         double i = testCar.getCurrentSpeed();
         assertEquals(0,i,0.001);
     }
@@ -54,23 +55,35 @@ public class CarTest {
         assertEquals(0,testCar.getCurrentSpeed(),0.001);
     }
 
+    @Test
+    public void getxPos(){
+        double i = testCar.getxPos();
+        assertEquals(0,i,0.001);
+    }
+
+    @Test
+    public void getyPos(){
+        double i = testCar.getyPos();
+        assertEquals(0,i,0.001);
+    }
+
 
     @Test
     public void move() {
         testCar.stopEngine();
         testCar.move();
-        assertEquals(0,testCar.xPos,0.001);
+        assertEquals(0,testCar.getxPos(),0.001);
     }
 
     @Test
     public void turnLeft() {
         testCar.turnLeft();
-        assertEquals(3,testCar.direction);
+        assertEquals(3,testCar.getDirection());
     }
 
     @Test
     public void turnRight() {
         testCar.turnRight();
-        assertEquals(1,testCar.direction);
+        assertEquals(1,testCar.getDirection());
     }
 }

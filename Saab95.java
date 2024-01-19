@@ -23,16 +23,16 @@ public class Saab95 extends Car{
         return enginePower * 0.01 * turbo;
     }
 
-    private void incrementSpeed(double amount){
+    public void incrementSpeed(double amount){
         currentSpeed = getCurrentSpeed() + speedFactor() * amount;
     }
 
-     private void decrementSpeed(double amount){
+     public void decrementSpeed(double amount){
         currentSpeed = getCurrentSpeed() - speedFactor() * amount;
     }
 
     // TODO fix this method according to lab pm
-    private void gas(double amount) {
+    public void gas(double amount) {
         if (amount >= 0 && amount <= 1) {
             incrementSpeed(amount);
             double speed = getCurrentSpeed();
@@ -47,7 +47,7 @@ public class Saab95 extends Car{
     }
 
     // TODO fix this method according to lab pm
-    private void brake(double amount) {
+    public void brake(double amount) {
         if (amount >= 0 && amount <= 1) {
             incrementSpeed(amount);
             double speed = getCurrentSpeed();

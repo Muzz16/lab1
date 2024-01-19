@@ -2,13 +2,13 @@ import java.awt.*;
 
 public class Car implements Movable {
     private final int nrDoors; // Number of doors on the car
-    public final double enginePower; // Engine power of the car
-    public Color color; // Color of the car
-    public final String modelName; // The car model name
-    public double currentSpeed; // The current speed of the car
-    public int direction= 0; // east = 0, south = 1, west = 2, north = 3
-    public double xPos = 0; // start in xPos = 0
-    public double yPos = 0; // start in yPos = 0
+    protected final double enginePower; // Engine power of the car
+    private Color color; // Color of the car
+    private final String modelName; // The car model name
+    protected double currentSpeed; // The current speed of the car
+    private int direction; // east = 0, south = 1, west = 2, north = 3
+    private double xPos; // start in xPos = 0
+    private double yPos; // start in yPos = 0
 
 
     public Car(int nrDoors, double enginePower, String modelName, Color color){
@@ -16,6 +16,9 @@ public class Car implements Movable {
         this.enginePower = enginePower;
         this.modelName = modelName;
         this.color = color;
+        this.direction = 0;
+        this.xPos = 0;
+        this.yPos = 0;
     }
 
     public int getNrDoors(){
@@ -45,6 +48,17 @@ public class Car implements Movable {
         currentSpeed = 0;
     }
 
+    public int getDirection(){
+        return direction;
+    }
+
+    public double getxPos(){
+        return xPos;
+    }
+
+    public double getyPos(){
+        return yPos;
+    }
     public void move(){
         switch (direction){
             case 0: // facing east
