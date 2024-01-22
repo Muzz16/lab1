@@ -18,7 +18,7 @@ public class Volvo240Test {
 
     @Test
     public void incrementSpeed() {
-        volvo.decrementSpeed(0);
+        volvo.incrementSpeed(0);
         assertEquals(0,volvo.getCurrentSpeed(),0.001);
     }
 

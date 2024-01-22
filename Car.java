@@ -6,7 +6,7 @@ public class Car implements Movable {
     private Color color; // Color of the car
     private final String modelName; // The car model name
     protected double currentSpeed; // The current speed of the car
-    private int direction; // east = 0, south = 1, west = 2, north = 3
+    private int direction; // north = 0, east = 1, south = 2, west = 3
     private double xPos; // start in xPos = 0
     private double yPos; // start in yPos = 0
 
@@ -61,20 +61,54 @@ public class Car implements Movable {
     }
     public void move(){
         switch (direction){
-            case 0: // facing east
+            case 0: // facing north
+                currentSpeed += yPos;
+                break;
+            case 1: // facing east
                 currentSpeed += xPos;
                 break;
-            case 1: // facing south
+            case 2: // facing south
                 currentSpeed -= yPos;
                 break;
-            case 2: // facing west
+            case 3: // facing west
                 currentSpeed -= xPos;
-                break;
-            case 3: // facing north
-                currentSpeed += yPos;
                 break;
             default:
                 break;
+        }
+    }
+
+    public void incrementSpeed(double amount) {
+    }
+
+    public void decrementSpeed(double amount) {
+    }
+
+    public void gas(double amount) {
+        if (amount >= 0 && amount <= 1) {
+            incrementSpeed(amount);
+            currentSpeed = Math.min(getCurrentSpeed(),enginePower);
+            if(currentSpeed < 0){
+                currentSpeed = Math.max(getCurrentSpeed(),0);
+            }
+        }
+        else{
+            System.out.println("Invalid gas range");
+        }
+    }
+
+    // TODO fix this method according to lab pm
+    public void brake(double amount) {
+        if (amount >= 0 && amount <= 1) {
+            decrementSpeed(amount);
+            double speed = getCurrentSpeed();
+            currentSpeed = Math.min(speed,enginePower);
+            if(currentSpeed < 0){
+                currentSpeed = Math.max(speed,0);
+            }
+        }
+        else{
+            System.out.println("Invalid brake range");
         }
     }
 

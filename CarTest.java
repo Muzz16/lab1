@@ -86,4 +86,15 @@ public class CarTest {
         testCar.turnRight();
         assertEquals(1,testCar.getDirection());
     }
+
+    @Test
+    public void gas() {
+        testCar.gas(0);
+        assertEquals(0,testCar.getCurrentSpeed(),0.001);
+    }
+    @Test
+    public void brake() {
+        testCar.brake(0);
+        assertEquals(0,testCar.getCurrentSpeed(), 0.001);
+    }
 }

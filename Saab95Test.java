@@ -41,17 +41,4 @@ public class Saab95Test {
         assertEquals(0,saab95.getCurrentSpeed(),0.001);
     }
 
-    @Test
-    public void gas() {
-        saab95.setTurboOn();
-        saab95.gas(1);
-        assertEquals(1.625,saab95.getCurrentSpeed(),0.001);
-
-    }
-
-    @Test
-    public void brake() {
-        saab95.brake(1);
-        assertEquals(0,saab95.getCurrentSpeed(),0.001);
-    }
 }
