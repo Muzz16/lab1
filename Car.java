@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Car implements Movable {
+public abstract class Car implements Movable {
     private final int nrDoors; // Number of doors on the car
     protected final double enginePower; // Engine power of the car
     private Color color; // Color of the car
@@ -78,6 +78,11 @@ public class Car implements Movable {
         }
     }
 
+
+    public double speedFactor(){
+        return 0;
+    }
+
     public void incrementSpeed(double amount) {
     }
 
@@ -93,11 +98,10 @@ public class Car implements Movable {
             }
         }
         else{
-            System.out.println("Invalid gas range");
+            throw new IllegalArgumentException("Out of range");
         }
     }
 
-    // TODO fix this method according to lab pm
     public void brake(double amount) {
         if (amount >= 0 && amount <= 1) {
             decrementSpeed(amount);
@@ -108,7 +112,7 @@ public class Car implements Movable {
             }
         }
         else{
-            System.out.println("Invalid brake range");
+            throw new IllegalArgumentException("Out of range");
         }
     }
 

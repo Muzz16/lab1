@@ -7,9 +7,12 @@ import static org.junit.Assert.*;
 
 public class CarTest {
     Car testCar;
+    Car testCar2;
+
     @Before
     public void init(){
-        testCar = new Car(4,100,"Volvo240",Color.black);
+        testCar = new Volvo240();
+        testCar2 = new Saab95();
     }
 
     @Test
@@ -96,5 +99,41 @@ public class CarTest {
     public void brake() {
         testCar.brake(0);
         assertEquals(0,testCar.getCurrentSpeed(), 0.001);
+    }
+
+    @Test
+    public void speedFactorVolvo() {
+        double i = testCar.speedFactor();
+        assertEquals(1.25,i,0.001);
+    }
+
+    @Test
+    public void speedFactorSaab(){
+        double i = testCar2.speedFactor();
+        assertEquals(1.25,i,0.001);
+    }
+
+    @Test
+    public void incrementSpeedVolvo() {
+        testCar.incrementSpeed(0);
+        assertEquals(0,testCar.getCurrentSpeed(),0.001);
+    }
+
+    @Test
+    public void decrementSpeedVolvo() {
+        testCar.decrementSpeed(0);
+        assertEquals(0,testCar.getCurrentSpeed(),0.001);
+    }
+
+    @Test
+    public void incrementSpeedSaab() {
+        testCar.incrementSpeed(0);
+        assertEquals(0,testCar2.getCurrentSpeed(),0.001);
+    }
+
+    @Test
+    public void decrementSpeedSaab() {
+        testCar.decrementSpeed(0);
+        assertEquals(0,testCar2.getCurrentSpeed(),0.001);
     }
 }
