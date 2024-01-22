@@ -62,16 +62,16 @@ public class Car implements Movable {
     public void move(){
         switch (direction){
             case 0: // facing north
-                currentSpeed += yPos;
+                yPos += currentSpeed;
                 break;
             case 1: // facing east
-                currentSpeed += xPos;
+                xPos += currentSpeed;
                 break;
             case 2: // facing south
-                currentSpeed -= yPos;
+                yPos -= currentSpeed;
                 break;
             case 3: // facing west
-                currentSpeed -= xPos;
+                xPos -= currentSpeed;
                 break;
             default:
                 break;
