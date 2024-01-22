@@ -30,9 +30,13 @@ public class Volvo240Test {
 
     @Test
     public void gas() {
+        volvo.gas(1);
+        assertEquals(1.25,volvo.getCurrentSpeed(),0.001);
     }
 
     @Test
     public void brake() {
+        volvo.brake(1);
+        assertEquals(0,volvo.getCurrentSpeed(),0.001);
     }
 }

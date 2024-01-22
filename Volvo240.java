@@ -46,7 +46,7 @@ public class Volvo240 extends Car {
             }
         }
         else{
-            System.out.println("Invalid gas range");
+            System.out.println("Invalid brake range");
         }
     }
 }

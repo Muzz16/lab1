@@ -49,7 +49,7 @@ public class Saab95 extends Car{
     // TODO fix this method according to lab pm
     public void brake(double amount) {
         if (amount >= 0 && amount <= 1) {
-            incrementSpeed(amount);
+            decrementSpeed(amount);
             double speed = getCurrentSpeed();
             currentSpeed = Math.min(speed,enginePower);
             if(currentSpeed < 0){
@@ -57,7 +57,7 @@ public class Saab95 extends Car{
             }
         }
         else{
-            System.out.println("Invalid gas range");
+            System.out.println("Invalid brake range");
         }
     }
 }
