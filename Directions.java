@@ -1,4 +1,4 @@
-public class Directions {
+public class Directions{
     public enum Direction {
         NORTH(0),
         EAST(1),
@@ -8,6 +8,19 @@ public class Directions {
         private final int value;
         Direction(int value) {
             this.value = value;
+        }
+
+        public int getValue(){
+            return value;
+        }
+
+        public static Direction fromValue(int value) {
+            for (Direction direction : Direction.values()) {
+                if (direction.getValue() == value) {
+                    return direction;
+                }
+            }
+            throw new IllegalArgumentException("Invalid direction value: " + value);
         }
 
     }

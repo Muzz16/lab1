@@ -6,13 +6,17 @@ import java.awt.*;
 import static org.junit.Assert.*;
 
 public class CarTest {
-    Car testCar;
-    Car testCar2;
+    Car testCar;    // Volvo240
+    Car testCar2;   // Saab95
+    Car testCar3;   // Scania Truck
+    Point position;
 
     @Before
     public void init(){
         testCar = new Volvo240();
         testCar2 = new Saab95();
+        testCar3 = new Scania();
+        position = new Point(0,0);
     }
 
     @Test
@@ -60,13 +64,13 @@ public class CarTest {
 
     @Test
     public void getxPos(){
-        double i = testCar.getxPos();
+        double i = testCar.getX();
         assertEquals(0,i,0.001);
     }
 
     @Test
     public void getyPos(){
-        double i = testCar.getyPos();
+        double i = testCar.getX();
         assertEquals(0,i,0.001);
     }
 
@@ -75,19 +79,19 @@ public class CarTest {
     public void move() {
         testCar.stopEngine();
         testCar.move();
-        assertEquals(0,testCar.getxPos(),0.001);
+        assertEquals(0,testCar.getX(),0.001);
     }
 
     @Test
     public void turnLeft() {
         testCar.turnLeft();
-        assertEquals(3,testCar.getDirection());
+        assertEquals(Directions.Direction.fromValue(3),testCar.getDirection());
     }
 
     @Test
     public void turnRight() {
         testCar.turnRight();
-        assertEquals(1,testCar.getDirection());
+        assertEquals(Directions.Direction.fromValue(1),testCar.getDirection());
     }
 
     @Test
@@ -135,5 +139,52 @@ public class CarTest {
     public void decrementSpeedSaab() {
         testCar.decrementSpeed(0);
         assertEquals(0,testCar2.getCurrentSpeed(),0.001);
+    }
+
+    @Test
+    public void increaseAngleScania(){
+        testCar3.increaseAngle(2);
+        assertEquals(2,testCar3.getRampAngle(),0.001);
+    }
+
+    @Test
+    public void decreaseAngleScania(){
+        testCar3.decreaseAngle(2);
+        assertEquals(0,testCar3.getRampAngle(),0.001);
+    }
+    @Test
+    public void incrementSpeedScania(){
+        testCar3.increaseAngle(5);
+        try{
+            testCar3.incrementSpeed(2);
+        } catch (Exception e){
+            assertFalse(testCar3.canMove());
+        }
+    }
+    @Test
+    public void decrementSpeedScania(){
+        testCar3.increaseAngle(5);
+        try{
+            testCar3.decrementSpeed(2);
+        } catch (Exception e){
+            assertFalse(testCar3.canMove());
+        }
+    }
+
+    @Test
+    public void getRampAngle(){
+        testCar3.increaseAngle(2);
+        assertEquals(2,testCar3.getRampAngle(),0.001);
+    }
+    @Test
+    public void canMove(){
+        testCar3.increaseAngle(2);
+        assertFalse(testCar3.canMove());
+    }
+
+    @Test
+    public void speedFactorScania(){
+        double i = testCar3.speedFactor();
+        assertEquals(2.1, i,0.001);
     }
 }
