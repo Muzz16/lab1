@@ -1,14 +1,16 @@
 import java.awt.*;
 
-public abstract class Car implements Movable {
+public abstract class Car extends Directions implements Movable {
     private final int nrDoors; // Number of doors on the car
     protected final double enginePower; // Engine power of the car
     private Color color; // Color of the car
     private final String modelName; // The car model name
     protected double currentSpeed; // The current speed of the car
     private int direction; // north = 0, east = 1, south = 2, west = 3
-    private double xPos; // start in xPos = 0
-    private double yPos; // start in yPos = 0
+
+    private Point position;
+
+
 
 
     public Car(int nrDoors, double enginePower, String modelName, Color color){
@@ -17,8 +19,8 @@ public abstract class Car implements Movable {
         this.modelName = modelName;
         this.color = color;
         this.direction = 0;
-        this.xPos = 0;
-        this.yPos = 0;
+        this.position = new Point(0,0);
+         // Initialize position at (0, 0)
     }
 
     public int getNrDoors(){
@@ -52,26 +54,22 @@ public abstract class Car implements Movable {
         return direction;
     }
 
-    public double getxPos(){
-        return xPos;
-    }
 
-    public double getyPos(){
-        return yPos;
-    }
     public void move(){
+        Direction direction = null;
+
         switch (direction){
-            case 0: // facing north
-                yPos += currentSpeed;
+            case NORTH: // facing north
+               position.setY(position.getY()+currentSpeed);
                 break;
-            case 1: // facing east
-                xPos += currentSpeed;
+            case EAST: // facing east
+                position.setX(position.getX()+currentSpeed);
                 break;
-            case 2: // facing south
-                yPos -= currentSpeed;
+            case SOUTH: // facing south
+                position.setY(position.getY()-currentSpeed);
                 break;
-            case 3: // facing west
-                xPos -= currentSpeed;
+            case WEST: // facing west
+                position.setX(position.getX()-currentSpeed);
                 break;
             default:
                 break;
