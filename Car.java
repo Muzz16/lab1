@@ -20,7 +20,7 @@ public abstract class Car extends Directions implements Movable {
         this.color = color;
         this.direction = 0;
         this.position = new Point(0,0);
-         // Initialize position at (0, 0)
+        // Initialize position at (0, 0)
     }
 
     public int getNrDoors(){
@@ -60,7 +60,7 @@ public abstract class Car extends Directions implements Movable {
 
         switch (direction){
             case NORTH: // facing north
-               position.setY(position.getY()+currentSpeed);
+                position.setY(position.getY()+currentSpeed);
                 break;
             case EAST: // facing east
                 position.setX(position.getX()+currentSpeed);
