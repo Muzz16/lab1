@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Scania extends Car{
+public class Scania extends CarTransport{
 
     private double rampAngle;
     private final static double trimFactor = 1.75;
@@ -10,6 +10,12 @@ public class Scania extends Car{
         stopEngine();
     }
 
+    @Override
+    public double speedFactor() {
+        return enginePower * 0.01 * trimFactor;
+    }
+
+    @Override
     public void increaseAngle(double amount){
         if(currentSpeed == 0) {
             rampAngle = Math.min(rampAngle + amount, 70);
@@ -17,6 +23,7 @@ public class Scania extends Car{
         else throw new IllegalArgumentException("Truck is moving");
     }
 
+    @Override
     public void decreaseAngle(double amount){
         if(currentSpeed == 0) {
             rampAngle = Math.max(rampAngle - amount, 0);
@@ -30,32 +37,10 @@ public class Scania extends Car{
     }
 
     @Override
-    public double speedFactor() {
-        return enginePower * 0.01 * trimFactor;
-    }
-
-    @Override
-    public void incrementSpeed(double amount) {
-        if(canMove()) {
-            currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower);
-        }
-        else throw new IllegalArgumentException("Can't move truck, ramp angle > 0");
-    }
-
-    @Override
-    public void decrementSpeed(double amount) {
-        if(canMove()) {
-            currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
-        }
-        else throw new IllegalArgumentException("Can't move truck, ramp angle > 0");
-    }
-
-    @Override
     public boolean canMove(){
         if(rampAngle == 0){
             return true;
         }
         return false;
     }
-
 }
