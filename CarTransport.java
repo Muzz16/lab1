@@ -12,6 +12,7 @@ public class CarTransport extends Car {
         super(i,i1,långtradare,color);
     }
 
+    @Override
     public double speedFactor(){
         return 0;
     }
