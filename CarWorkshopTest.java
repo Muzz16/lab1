@@ -18,6 +18,7 @@ public class CarWorkshopTest{
     @Test
     public void add() {
         volvoWorkshop.add(volvo);
+        assertTrue(volvo instanceof Volvo240);
     }
 
 

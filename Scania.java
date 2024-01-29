@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Scania extends CarTransport{
+public class Scania extends Car{
 
     private double rampAngle;
     private final static double trimFactor = 1.75;

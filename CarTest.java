@@ -187,4 +187,5 @@ public class CarTest {
         double i = testCar3.speedFactor();
         assertEquals(2.1, i,0.001);
     }
+
 }
