@@ -6,10 +6,11 @@ import java.util.List;
 
 public class CarTransport extends Car {
     private boolean rampIsUp;
+    private int rangeDiff = 5;
     private Deque<Car> carsLoaded = new ArrayDeque<>();
 
-    public CarTransport(int i, int i1, String långtradare, Color color) {
-        super(i,i1,långtradare,color);
+    public CarTransport() {
+        super(2,140,"CarTransport",Color.black);
     }
 
     @Override
@@ -48,7 +49,7 @@ public class CarTransport extends Car {
     }
 
     public boolean CarisClose(Car car){
-        if((car.getX() >= (getX()-5) && car.getX() < getX()) && car.getY() == getY()){
+        if((car.getX() >= (getX()-rangeDiff) && car.getX() < getX()) && car.getY() == getY()){
             return true;
         }
         return false;
@@ -73,7 +74,7 @@ public class CarTransport extends Car {
     public void unloadCars(Car car){
         if(rampIsUp == false){
             carsLoaded.pop();
-            car.setX(getX() - 5);
+            car.setX(getX() - rangeDiff);
             car.setY(getY());
         }
         else throw new IllegalArgumentException("Can't unload because ramp is up");
