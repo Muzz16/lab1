@@ -48,7 +48,7 @@ public class CarTransport extends Car {
     }
 
     public boolean CarisClose(Car car){
-        if(car.getX() >= (getX()-5) && car.getY() == getY()){
+        if((car.getX() >= (getX()-5) && car.getX() < getX()) && car.getY() == getY()){
             return true;
         }
         return false;
