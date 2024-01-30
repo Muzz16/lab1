@@ -18,8 +18,14 @@ public class CarWorkshopTest{
     @Test
     public void add() {
         volvoWorkshop.add(volvo);
-        assertTrue(volvo instanceof Volvo240);
+        assertTrue(volvoWorkshop.contains(volvo));
     }
 
+    @Test
+    public void remove(){
+        volvoWorkshop.add(volvo);
+        volvoWorkshop.removeCar(volvo);
+        assertFalse(volvoWorkshop.contains(volvo));
+    }
 
 }
