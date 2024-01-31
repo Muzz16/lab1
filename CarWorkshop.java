@@ -1,39 +1,29 @@
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
-public class CarWorkshop<T extends Car>{
+public class CarWorkshop<T extends Car> implements hasCarStack<T>{
 
-    private List<T> carsInWorkshop;
-    private int currentCapacity;
-    private int maxCapacity;
+    private CarStack<T> carsInWorkshop;
+    public CarWorkshop(){
+        this.carsInWorkshop = new CarStack<>(4);
 
-    public CarWorkshop(int maxCapacity){
-        this.maxCapacity = maxCapacity;
-        this.currentCapacity = 0;
-        this.carsInWorkshop = new ArrayList<>();
     }
 
-    public void add(T car){
-        if(currentCapacity < maxCapacity){
-            carsInWorkshop.add(car);
-            currentCapacity = carsInWorkshop.size();
-        }
-        else throw new IllegalArgumentException("Workshop is full");
-    }
-
-    public T removeCar(T car){
-        if(currentCapacity > 0) {
-            carsInWorkshop.remove(car);
-            currentCapacity = carsInWorkshop.size();
-            return car;
-        }
-        else throw new IllegalArgumentException("Empty or the car doesn't exist");
-    }
-
+    @Override
     public boolean contains(T car){
-        if(carsInWorkshop.contains(car)){
-            return true;
-        }
-        else return false;
+        return carsInWorkshop.contains(car);
+    }
+
+
+    @Override
+    public void add(T car) {
+        carsInWorkshop.add(car);
+    }
+
+    @Override
+    public T removeCar() {
+        return carsInWorkshop.removeCar();
     }
 
 }

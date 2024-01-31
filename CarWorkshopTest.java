@@ -15,19 +15,7 @@ public class CarWorkshopTest{
     public void init(){
         volvo = new Volvo240();
         saab = new Saab95();
-        volvoWorkshop = new CarWorkshop(4);
-    }
-    @Test
-    public void add() {
-        volvoWorkshop.add(volvo);
-        assertTrue(volvoWorkshop.contains(volvo));
-    }
-
-    @Test
-    public void remove(){
-        volvoWorkshop.add(volvo);
-        volvoWorkshop.removeCar(volvo);
-        assertFalse(volvoWorkshop.contains(volvo));
+        volvoWorkshop = new CarWorkshop();
     }
 
 }

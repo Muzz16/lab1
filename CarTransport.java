@@ -1,24 +1,21 @@
 import java.awt.*;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
 
-public class CarTransport extends Truck{
-    private boolean rampIsClosed;
+public class CarTransport extends Trucks implements hasTruckRamp,hasCarStack<Car>{
+    protected boolean rampIsClosed;
     private int rangeDiff = 5;
-    private Deque<Car> carsLoaded = new ArrayDeque<>();
+    private CarStack<Car> carStack;
 
     public CarTransport() {
         super(2,140,"CarTransport",Color.black);
         this.rampIsClosed = true;
+        carStack = new CarStack<>(4);
     }
 
-    public void rampSwitch(){
+    public boolean rampSwitch(){
         if(rampIsClosed == true && notMoving()){
-            rampIsClosed = false;
+            return rampIsClosed = false;
         }
-        else rampIsClosed = true;
+        else return rampIsClosed = true;
     }
 
     @Override
@@ -37,23 +34,6 @@ public class CarTransport extends Truck{
         else return true;
     }
 
-    public void loadCars(Car car){
-        if(!rampIsClosed && CarisClose(car) && CarIsNotCarTransport(car)){
-            carsLoaded.push(car);
-            car.setX(getX());
-            car.setY(getY());
-        }
-        else throw new IllegalArgumentException("Can't load car because car is too far away or ramp is up");
-    }
-
-    public void unloadCars(Car car){
-        if(rampIsClosed == false){
-            carsLoaded.pop();
-            car.setX(getX() - rangeDiff);
-            car.setY(getY());
-        }
-        else throw new IllegalArgumentException("Can't unload because ramp is up");
-    }
 
     @Override
     public boolean canMove(){
@@ -62,6 +42,18 @@ public class CarTransport extends Truck{
 
     @Override
     public boolean contains(Car car){
-        return carsLoaded.contains(car);
+        return carStack.contains(car);
     }
+
+
+    @Override
+    public void add(Car car) {
+        carStack.add(car);
+    }
+
+    @Override
+    public Car removeCar() {
+        return carStack.removeCar();
+    }
+
 }

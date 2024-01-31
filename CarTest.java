@@ -87,13 +87,13 @@ public class CarTest {
     @Test
     public void turnLeft() {
         testCar.turnLeft();
-        assertEquals(Directions.Direction.fromValue(3),testCar.getDirection());
+        assertEquals(Directions.fromValue(3),testCar.getDirection());
     }
 
     @Test
     public void turnRight() {
         testCar.turnRight();
-        assertEquals(Directions.Direction.fromValue(1),testCar.getDirection());
+        assertEquals(Directions.fromValue(1),testCar.getDirection());
     }
 
     @Test
@@ -133,13 +133,13 @@ public class CarTest {
 
     @Test
     public void incrementSpeedSaab() {
-        testCar.incrementSpeed(0);
+        testCar2.incrementSpeed(0);
         assertEquals(0,testCar2.getCurrentSpeed(),0.001);
     }
 
     @Test
     public void decrementSpeedSaab() {
-        testCar.decrementSpeed(0);
+        testCar2.decrementSpeed(0);
         assertEquals(0,testCar2.getCurrentSpeed(),0.001);
     }
 
@@ -236,9 +236,45 @@ public class CarTest {
         testCar3.setY(10);
         testCar4.setX(15);
         testCar4.setY(10);
-        testCar4.loadCars(testCar3);
+        testCar4.add(testCar3);
         assertTrue(testCar4.contains(testCar3));
     }
+
+    @Test
+    public void unloadCarsCarTransport(){
+        testCar4.rampSwitch();
+        testCar4.setY(10);
+        testCar4.setX(10);
+        testCar4.add(testCar3);
+        Car car = testCar4.removeCar();
+        assertFalse(testCar4.contains(car));
+    }
+
+    @Test
+    public void setTurboOnSaab(){
+        testCar2.setTurboOn();
+        double i = testCar2.speedFactor();
+        assertEquals(1.625,i,0.001);
+    }
+
+    @Test
+    public void setTurboOffSaab(){
+        testCar2.setTurboOff();
+        double i = testCar2.speedFactor();
+        assertEquals(1.25,i,0.001);
+    }
+
+    @Test
+    public void contains(){
+        testCar4.add(testCar);
+        assertTrue(testCar4.contains(testCar));
+    }
+
+    @Test
+    public void rampSwitch(){
+        assertFalse(testCar4.rampSwitch());
+    }
+
 
 
 }

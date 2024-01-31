@@ -1,12 +1,12 @@
 import java.awt.*;
 
-public abstract class Car extends Directions implements Movable{
+public abstract class Car implements Movable{
     private final int nrDoors; // Number of doors on the car
     protected final double enginePower; // Engine power of the car
     private Color color; // Color of the car
     private final String modelName; // The car model name
     protected double currentSpeed; // The current speed of the car
-    private Direction direction; // north = 0, east = 1, south = 2, west = 3
+    private Directions direction; // north = 0, east = 1, south = 2, west = 3
     private Point position;
 
 
@@ -15,7 +15,7 @@ public abstract class Car extends Directions implements Movable{
         this.enginePower = enginePower;
         this.modelName = modelName;
         this.color = color;
-        this.direction = Direction.NORTH;
+        this.direction = Directions.NORTH;
         this.position = new Point(0,0);
         // Initialize position at (0, 0)
     }
@@ -47,9 +47,12 @@ public abstract class Car extends Directions implements Movable{
         currentSpeed = 0;
     }
 
-    public Direction getDirection(){
+    public Directions getDirection(){
         return direction;
     }
+
+    public void setTurboOn(){}
+    public void setTurboOff(){}
 
     public void move(){
         switch (direction){
@@ -123,11 +126,11 @@ public abstract class Car extends Directions implements Movable{
 
 
     public void turnLeft(){
-        direction = Direction.fromValue((direction.getValue() + 3) % 4);
+        direction = Directions.fromValue((direction.getValue() + 3) % 4);
     }
 
     public void turnRight(){
-        direction = Direction.fromValue((direction.getValue() + 1) % 4);
+        direction = Directions.fromValue((direction.getValue() + 1) % 4);
     }
 
     public double getX() {
@@ -152,7 +155,8 @@ public abstract class Car extends Directions implements Movable{
         return false;
     }
 
-    public void rampSwitch(){
+    public boolean rampSwitch(){
+        return false;
     }
 
     public boolean CarisClose(Car car){
@@ -163,11 +167,11 @@ public abstract class Car extends Directions implements Movable{
         return false;
     }
 
-    public void loadCars(Car car){
+    public void add(Car car){
     }
 
-    public void unloadCars(Car car){
-
+    public Car removeCar(){
+        return null;
     }
 
     public boolean contains(Car car){

@@ -1,12 +1,12 @@
-public class Directions{
-    public enum Direction {
+
+    public enum Directions {
         NORTH(0),
         EAST(1),
         SOUTH(2),
         WEST(3);
 
         private final int value;
-        Direction(int value) {
+        Directions(int value) {
             this.value = value;
         }
 
@@ -14,8 +14,8 @@ public class Directions{
             return value;
         }
 
-        public static Direction fromValue(int value) {
-            for (Direction direction : Direction.values()) {
+        public static Directions fromValue(int value) {
+            for (Directions direction : Directions.values()) {
                 if (direction.getValue() == value) {
                     return direction;
                 }
@@ -24,4 +24,4 @@ public class Directions{
         }
 
     }
-}
+
