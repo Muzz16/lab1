@@ -114,6 +114,14 @@ public abstract class Car extends Directions implements Movable{
         }
     }
 
+    public boolean notMoving(){
+        if(currentSpeed == 0){
+            return true;
+        }
+        return false;
+    }
+
+
     public void turnLeft(){
         direction = Direction.fromValue((direction.getValue() + 3) % 4);
     }
@@ -144,4 +152,6 @@ public abstract class Car extends Directions implements Movable{
         return false;
     }
 
+    public void rampSwitch(){
+    }
 }

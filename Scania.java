@@ -1,9 +1,8 @@
 import java.awt.*;
 
-public class Scania extends Car{
+public class Scania extends Truck{
 
     private double rampAngle;
-    private final static double trimFactor = 1.75;
     public Scania(){
         super(2,120,"Scania", Color.white);
         rampAngle = 0;
@@ -11,13 +10,8 @@ public class Scania extends Car{
     }
 
     @Override
-    public double speedFactor() {
-        return enginePower * 0.01 * trimFactor;
-    }
-
-    @Override
     public void increaseAngle(double amount){
-        if(currentSpeed == 0) {
+        if(notMoving()) {
             rampAngle = Math.min(rampAngle + amount, 70);
         }
         else throw new IllegalArgumentException("Truck is moving");
@@ -25,7 +19,7 @@ public class Scania extends Car{
 
     @Override
     public void decreaseAngle(double amount){
-        if(currentSpeed == 0) {
+        if(notMoving()) {
             rampAngle = Math.max(rampAngle - amount, 0);
         }
         else throw new IllegalArgumentException("Truck is moving");

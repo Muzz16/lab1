@@ -9,6 +9,7 @@ public class CarTest {
     Car testCar;    // Volvo240
     Car testCar2;   // Saab95
     Car testCar3;   // Scania Truck
+    Car testCar4;  // CarTransport
     Point position;
 
     @Before
@@ -16,6 +17,7 @@ public class CarTest {
         testCar = new Volvo240();
         testCar2 = new Saab95();
         testCar3 = new Scania();
+        testCar4 = new CarTransport();
         position = new Point(0,0);
     }
 
@@ -172,12 +174,12 @@ public class CarTest {
     }
 
     @Test
-    public void getRampAngle(){
+    public void getRampAngleScania(){
         testCar3.increaseAngle(2);
         assertEquals(2,testCar3.getRampAngle(),0.001);
     }
     @Test
-    public void canMove(){
+    public void canMoveScania(){
         testCar3.increaseAngle(2);
         assertFalse(testCar3.canMove());
     }
@@ -185,7 +187,34 @@ public class CarTest {
     @Test
     public void speedFactorScania(){
         double i = testCar3.speedFactor();
-        assertEquals(2.1, i,0.001);
+        assertEquals(2.4, i,0.001);
     }
+
+    @Test
+    public void incrementSpeedCarTransport(){
+        testCar3.increaseAngle(5);
+        try{
+            testCar3.incrementSpeed(2);
+        } catch (Exception e){
+            assertFalse(testCar3.canMove());
+        }
+    }
+    @Test
+    public void decrementSpeedCarTransport(){
+        testCar3.increaseAngle(5);
+        try{
+            testCar3.decrementSpeed(2);
+        } catch (Exception e){
+            assertFalse(testCar3.canMove());
+        }
+    }
+
+    @Test
+    public void canMoveCarTransport(){
+        testCar4.rampSwitch();
+        assertTrue(testCar4.canMove());
+    }
+
+
 
 }

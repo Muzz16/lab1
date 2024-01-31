@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
-public class CarTransport extends Car {
-    private boolean rampIsUp;
+public class CarTransport extends Truck{
+    private boolean rampIsClosed;
     private int rangeDiff = 5;
     private Deque<Car> carsLoaded = new ArrayDeque<>();
 
@@ -13,39 +13,11 @@ public class CarTransport extends Car {
         super(2,140,"CarTransport",Color.black);
     }
 
-    @Override
-    public double speedFactor(){
-        return 0;
-    }
-
-    @Override
-    public void incrementSpeed(double amount) {
-        if(canMove()) {
-            currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower);
-        }
-        else throw new IllegalArgumentException("Can't move truck, ramp angle > 0");
-    }
-
-    @Override
-    public void decrementSpeed(double amount) {
-        if(canMove()) {
-            currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
-        }
-        else throw new IllegalArgumentException("Can't move truck, ramp angle > 0");
-    }
-
     public void rampSwitch(){
-        if(rampIsUp == true && notMoving()){
-            rampIsUp = false;
+        if(rampIsClosed == true && notMoving()){
+            rampIsClosed = false;
         }
-        else rampIsUp = true;
-    }
-
-    public boolean notMoving(){
-        if(currentSpeed == 0){
-            return true;
-        }
-        return false;
+        else rampIsClosed = true;
     }
 
     public boolean CarisClose(Car car){
@@ -55,7 +27,7 @@ public class CarTransport extends Car {
         return false;
     }
 
-    public boolean CarIsNotCarTransport (Car car){
+    public boolean CarIsNotCarTransport(Car car){
         if(car instanceof CarTransport){
             return false;
         }
@@ -63,7 +35,7 @@ public class CarTransport extends Car {
     }
 
     public void loadCars(Car car){
-        if(!rampIsUp && CarisClose(car) && CarIsNotCarTransport(car)){
+        if(!rampIsClosed && CarisClose(car) && CarIsNotCarTransport(car)){
             carsLoaded.push(car);
             car.setX(getX());
             car.setY(getY());
@@ -72,7 +44,7 @@ public class CarTransport extends Car {
     }
 
     public void unloadCars(Car car){
-        if(rampIsUp == false){
+        if(rampIsClosed == false){
             carsLoaded.pop();
             car.setX(getX() - rangeDiff);
             car.setY(getY());
@@ -80,6 +52,8 @@ public class CarTransport extends Car {
         else throw new IllegalArgumentException("Can't unload because ramp is up");
     }
 
-
-
+    @Override
+    public boolean canMove(){
+        return rampIsClosed;
+    }
 }
