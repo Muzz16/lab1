@@ -11,6 +11,7 @@ public class CarTransport extends Truck{
 
     public CarTransport() {
         super(2,140,"CarTransport",Color.black);
+        this.rampIsClosed = true;
     }
 
     public void rampSwitch(){
@@ -20,13 +21,15 @@ public class CarTransport extends Truck{
         else rampIsClosed = true;
     }
 
+    @Override
     public boolean CarisClose(Car car){
-        if((car.getX() >= (getX()-rangeDiff) && car.getX() < getX()) && car.getY() == getY()){
+        if((car.getX() >= (getX()-rangeDiff)) && (car.getY() == getY() )){
             return true;
         }
         return false;
     }
 
+    @Override
     public boolean CarIsNotCarTransport(Car car){
         if(car instanceof CarTransport){
             return false;
@@ -55,5 +58,10 @@ public class CarTransport extends Truck{
     @Override
     public boolean canMove(){
         return rampIsClosed;
+    }
+
+    @Override
+    public boolean contains(Car car){
+        return carsLoaded.contains(car);
     }
 }

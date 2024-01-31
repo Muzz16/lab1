@@ -212,9 +212,33 @@ public class CarTest {
     @Test
     public void canMoveCarTransport(){
         testCar4.rampSwitch();
-        assertTrue(testCar4.canMove());
+        assertFalse(testCar4.canMove());
     }
 
+    @Test
+    public void carIsCloseCarTransport(){
+        testCar3.setX(10);
+        testCar3.setY(10);
+        testCar4.setX(15);
+        testCar4.setY(10);
+        assertTrue(testCar4.CarisClose(testCar3));
+    }
+
+    @Test
+    public void carIsNotACarTransport(){
+        assertTrue(testCar4.CarIsNotCarTransport(testCar3));
+    }
+
+    @Test
+    public void loadCarsCarTransport(){
+        testCar4.rampSwitch();
+        testCar3.setX(10);
+        testCar3.setY(10);
+        testCar4.setX(15);
+        testCar4.setY(10);
+        testCar4.loadCars(testCar3);
+        assertTrue(testCar4.contains(testCar3));
+    }
 
 
 }

@@ -154,4 +154,23 @@ public abstract class Car extends Directions implements Movable{
 
     public void rampSwitch(){
     }
+
+    public boolean CarisClose(Car car){
+        return false;
+    }
+
+    public boolean CarIsNotCarTransport(Car car){
+        return false;
+    }
+
+    public void loadCars(Car car){
+    }
+
+    public void unloadCars(Car car){
+
+    }
+
+    public boolean contains(Car car){
+        return false;
+    }
 }
