@@ -27,7 +27,6 @@ public class CarView extends JFrame{
     JPanel gasPanel = new JPanel();
     JSpinner gasSpinner = new JSpinner();
     int gasAmount = 0;
-    int brakeAmount = 0;
     JLabel gasLabel = new JLabel("Amount of gas");
 
     JButton gasButton = new JButton("Gas");
@@ -55,7 +54,6 @@ public class CarView extends JFrame{
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         this.add(drawPanel);
-
 
 
         SpinnerModel spinnerModel =
@@ -89,8 +87,8 @@ public class CarView extends JFrame{
         controlPanel.setBackground(Color.CYAN);
 
 
-        startButton.setBackground(Color.blue);
-        startButton.setForeground(Color.green);
+        startButton.setBackground(Color.green);
+        startButton.setForeground(Color.black);
         startButton.setPreferredSize(new Dimension(X/5-15,200));
         this.add(startButton);
 
@@ -112,7 +110,7 @@ public class CarView extends JFrame{
         brakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.brake(brakeAmount);
+                carC.brake(gasAmount);
             }
         });
 

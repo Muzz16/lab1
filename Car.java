@@ -51,6 +51,10 @@ public abstract class Car implements Movable{
         return direction;
     }
 
+    public void setDirection(int x){
+        this.direction = Directions.fromValue(x);
+    }
+
     public void setTurboOn(){}
     public void setTurboOff(){}
 

@@ -48,6 +48,12 @@ public class CarController {
                 int x = (int) Math.round(car.getX());
                 int y = (int) Math.round(car.getY());
                 frame.drawPanel.moveit(x, y);
+                if(y > frame.drawPanel.getHeight()){
+                    car.setDirection(2);
+                }
+                if(y < 0){
+                    car.setDirection(0);
+                }
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
