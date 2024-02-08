@@ -30,6 +30,8 @@ public class CarController {
         CarController cc = new CarController();
 
         cc.cars.add(new Volvo240());
+        cc.cars.add(new Saab95());
+        cc.cars.add(new Scania());
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -48,11 +50,11 @@ public class CarController {
                 int x = (int) Math.round(car.getX());
                 int y = (int) Math.round(car.getY());
                 frame.drawPanel.moveit(x, y);
-                if(y > frame.drawPanel.getHeight()){
-                    car.setDirection(2);
+                if(y > frame.drawPanel.getHeight()-70){
+                    car.setDirection(Directions.SOUTH);
                 }
                 if(y < 0){
-                    car.setDirection(0);
+                    car.setDirection(Directions.NORTH);
                 }
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();

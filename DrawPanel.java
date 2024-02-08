@@ -11,8 +11,12 @@ public class DrawPanel extends JPanel{
 
     // Just a single image, TODO: Generalize
     BufferedImage volvoImage;
+    BufferedImage saab95Image;
+    BufferedImage scaniaImage;
     // To keep track of a single car's position
     Point volvoPoint = new Point(50,50);
+    Point saab95Point = new Point(50,150);
+    Point scaniaPoint = new Point(50,250);
 
     BufferedImage volvoWorkshopImage;
     Point volvoWorkshopPoint = new Point(300,300);
@@ -38,6 +42,8 @@ public class DrawPanel extends JPanel{
             // if you are starting in IntelliJ.
             volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
             volvoWorkshopImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/VolvoBrand.jpg"));
+            saab95Image = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
+            scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
         } catch (IOException ex)
         {
             ex.printStackTrace();
@@ -52,5 +58,7 @@ public class DrawPanel extends JPanel{
         super.paintComponent(g);
         g.drawImage(volvoImage, (int) volvoPoint.x, (int) volvoPoint.y, null); // see javadoc for more info on the parameters
         g.drawImage(volvoWorkshopImage, (int) volvoWorkshopPoint.x, (int) volvoWorkshopPoint.x, null);
+        g.drawImage(saab95Image, (int) saab95Point.x, (int) saab95Point.y, null);
+        g.drawImage(scaniaImage, (int) scaniaPoint.x, (int) scaniaPoint.y,null);
     }
 }

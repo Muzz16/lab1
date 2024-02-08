@@ -7,7 +7,7 @@ public abstract class Car implements Movable{
     private final String modelName; // The car model name
     protected double currentSpeed; // The current speed of the car
     private Directions direction; // north = 0, east = 1, south = 2, west = 3
-    private Point position;
+    protected Point position;
 
 
     public Car(int nrDoors, double enginePower, String modelName, Color color){
@@ -51,8 +51,8 @@ public abstract class Car implements Movable{
         return direction;
     }
 
-    public void setDirection(int x){
-        this.direction = Directions.fromValue(x);
+    public void setDirection(Directions direction){
+        this.direction = direction;
     }
 
     public void setTurboOn(){}
