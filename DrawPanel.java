@@ -35,9 +35,12 @@ public class DrawPanel extends JPanel{
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.pink);
         this.cars = cars;
-        carPositions.put(cars.get(0), new Point(50,400));
-        carPositions.put(cars.get(1), new Point(50,150));
-        carPositions.put(cars.get(2), new Point(50,250));
+        int n = 50;
+        for (int i = 0; i < cars.size(); i++) {
+            carPositions.put(cars.get(i), new Point(0,n));
+            n+=50;
+        }
+
         // Print an error message in case file is not found with a try/catch block
         try {
             // You can remove the "pics" part if running outside of IntelliJ and
@@ -61,9 +64,10 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(carImages.get(cars.get(0)), (int) carPositions.get(cars.get(0)).x, (int) carPositions.get(cars.get(0)).y, null); // see javadoc for more info on the parameters
+        for (int i = 0; i < cars.size(); i++) {
+            g.drawImage(carImages.get(cars.get(i)), (int) carPositions.get(cars.get(i)).x, (int) carPositions.get(cars.get(i)).y, null); // see javadoc for more info on the parameters
+
+        }
         g.drawImage(volvoWorkshopImage, (int) volvoWorkshopPoint.x, (int) volvoWorkshopPoint.y, null);
-        g.drawImage(carImages.get(cars.get(1)), (int) carPositions.get(cars.get(1)).x, (int) carPositions.get(cars.get(1)).y, null);
-        g.drawImage(carImages.get(cars.get(2)), (int) carPositions.get(cars.get(2)).x, (int) carPositions.get(cars.get(2)).y,null);
     }
 }

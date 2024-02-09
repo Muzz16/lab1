@@ -30,16 +30,19 @@ public class CarController {
         // Instance of this class
         CarController cc = new CarController();
 
-        Car v = new Volvo240();
-        v.setY(50);
-        cc.cars.add(v);
+        Car v0 = new Volvo240();
+        v0.setY(50);
+        v0.setX(0);
+        cc.cars.add(v0);
 
         Car v1 = new Saab95();
-        v.setY(150);
+        v1.setY(150);
+        v1.setX(0);
         cc.cars.add(v1);
 
         Car v2 = new Scania();
         v2.setY(250);
+        v2.setX(0);
         cc.cars.add(v2);
 
         // Start a new view and send a reference of self
@@ -59,11 +62,11 @@ public class CarController {
                 int x = (int) Math.round(car.getX());
                 int y = (int) Math.round(car.getY());
                 frame.drawPanel.moveit(car,x, y);
-                if(y > frame.drawPanel.getHeight()-70){
-                    car.setDirection(Directions.SOUTH);
+                if(x > frame.drawPanel.getWidth()-115){
+                    car.setDirection(Directions.WEST);
                 }
-                if(y < 0){
-                    car.setDirection(Directions.NORTH);
+                if(x < 0){
+                    car.setDirection(Directions.EAST);
                 }
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
