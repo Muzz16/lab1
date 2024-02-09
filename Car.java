@@ -142,6 +142,7 @@ public abstract class Car implements Movable{
     }
 
     public void setX(double x) {
+        position.x = x;
     }
 
     public double getY() {
@@ -149,6 +150,7 @@ public abstract class Car implements Movable{
     }
 
     public void setY(double y) {
+        position.y = y;
     }
 
     public double getRampAngle(){

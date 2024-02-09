@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /*
 * This class represents the Controller part in the MVC pattern.
@@ -21,7 +22,7 @@ public class CarController {
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
-    ArrayList<Car> cars = new ArrayList<>();
+    protected ArrayList<Car> cars = new ArrayList<>();
 
     //methods:
 
@@ -29,9 +30,17 @@ public class CarController {
         // Instance of this class
         CarController cc = new CarController();
 
-        cc.cars.add(new Volvo240());
-        cc.cars.add(new Saab95());
-        cc.cars.add(new Scania());
+        Car v = new Volvo240();
+        v.setY(50);
+        cc.cars.add(v);
+
+        Car v1 = new Saab95();
+        v.setY(150);
+        cc.cars.add(v1);
+
+        Car v2 = new Scania();
+        v2.setY(250);
+        cc.cars.add(v2);
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -49,7 +58,7 @@ public class CarController {
                 car.move();
                 int x = (int) Math.round(car.getX());
                 int y = (int) Math.round(car.getY());
-                frame.drawPanel.moveit(x, y);
+                frame.drawPanel.moveit(car,x, y);
                 if(y > frame.drawPanel.getHeight()-70){
                     car.setDirection(Directions.SOUTH);
                 }
