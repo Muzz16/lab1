@@ -26,7 +26,8 @@ public class DrawPanel extends JPanel{
     void moveit(Car car,int x, int y){
             Point newPos = new Point(x,y);
             carPositions.put(car,newPos);
-
+            car.setY(y);
+            car.setX(x);
     }
 
     // Initializes the panel and reads the images
@@ -35,11 +36,6 @@ public class DrawPanel extends JPanel{
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.pink);
         this.cars = cars;
-        int n = 50;
-        for (int i = 0; i < cars.size(); i++) {
-            carPositions.put(cars.get(i), new Point(0,n));
-            n+=50;
-        }
 
         // Print an error message in case file is not found with a try/catch block
         try {
@@ -49,13 +45,23 @@ public class DrawPanel extends JPanel{
 
             // Rememember to rightclick src New -> Package -> name: pics -> MOVE *.jpg to pics.
             // if you are starting in IntelliJ.
-            carImages.put(cars.get(0),ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg")));
+            ArrayList<String> imagePaths = new ArrayList<>();
+            imagePaths.add("pics/Volvo240.jpg");
+            imagePaths.add("pics/Saab95.jpg");
+            imagePaths.add("pics/Scania.jpg");
+
+            for (int i = 0; i < cars.size(); i++) {
+                carImages.put(cars.get(i),ImageIO.read(DrawPanel.class.getResourceAsStream(imagePaths.get(i))));
+            }
             volvoWorkshopImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/VolvoBrand.jpg"));
-            carImages.put(cars.get(1),ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg")));
-            carImages.put(cars.get(2),ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg")));
         } catch (IOException ex)
         {
             ex.printStackTrace();
+        }
+        int pixels = 50;
+        for (int i = 0; i < cars.size(); i++) {
+            carPositions.put(cars.get(i), new Point(0,pixels));
+            pixels+=100;
         }
     }
 
@@ -66,7 +72,6 @@ public class DrawPanel extends JPanel{
         super.paintComponent(g);
         for (int i = 0; i < cars.size(); i++) {
             g.drawImage(carImages.get(cars.get(i)), (int) carPositions.get(cars.get(i)).x, (int) carPositions.get(cars.get(i)).y, null); // see javadoc for more info on the parameters
-
         }
         g.drawImage(volvoWorkshopImage, (int) volvoWorkshopPoint.x, (int) volvoWorkshopPoint.y, null);
     }
