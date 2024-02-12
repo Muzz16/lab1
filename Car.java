@@ -9,6 +9,8 @@ public abstract class Car implements Movable{
     private Directions direction; // north = 0, east = 1, south = 2, west = 3
     protected Point position;
 
+    protected boolean engineStatus;
+
 
     public Car(int nrDoors, double enginePower, String modelName, Color color){
         this.nrDoors = nrDoors;
@@ -18,6 +20,7 @@ public abstract class Car implements Movable{
         this.direction = Directions.EAST;
         this.position = new Point(0,0);
         // Initialize position at (0, 0)
+        this.engineStatus = false;
     }
 
     public int getNrDoors(){
@@ -41,10 +44,12 @@ public abstract class Car implements Movable{
 
     public void startEngine(){
         currentSpeed = 0.1;
+        engineStatus = true;
     }
 
     public void stopEngine(){
         currentSpeed = 0;
+        engineStatus = false;
     }
 
     public Directions getDirection(){
@@ -77,7 +82,6 @@ public abstract class Car implements Movable{
         }
     }
 
-
     public double speedFactor(){
         return 0;
     }
@@ -95,15 +99,19 @@ public abstract class Car implements Movable{
     }
 
     public void gas(double amount) {
-        if (amount >= 0 && amount <= 1) {
-            incrementSpeed(amount);
-            currentSpeed = Math.min(getCurrentSpeed(),enginePower);
-            if(currentSpeed < 0){
-                currentSpeed = Math.max(getCurrentSpeed(),0);
+        if(engineStatus) {
+            if (amount >= 0 && amount <= 1) {
+                incrementSpeed(amount);
+                currentSpeed = Math.min(getCurrentSpeed(), enginePower);
+                if (currentSpeed < 0) {
+                    currentSpeed = Math.max(getCurrentSpeed(), 0);
+                }
+            } else {
+                throw new IllegalArgumentException("Out of range");
             }
         }
         else{
-            throw new IllegalArgumentException("Out of range");
+            throw new IllegalArgumentException("Engine must be on");
         }
     }
 

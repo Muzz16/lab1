@@ -4,7 +4,7 @@ public class Scania extends Trucks implements hasTruckBed{
 
     private double rampAngle;
     public Scania(){
-        super(2,120,"Scania", Color.white);
+        super(2,110,"Scania", Color.white);
         rampAngle = 0;
         stopEngine();
     }

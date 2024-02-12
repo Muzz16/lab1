@@ -20,14 +20,12 @@ public class DrawPanel extends JPanel{
 
     // To keep track of a single car's position
     BufferedImage volvoWorkshopImage;
-    Point volvoWorkshopPoint = new Point(300,300);
+    Point volvoWorkshopPoint = new Point(300,50);
 
     // TODO: Make this general for all cars
     void moveit(Car car,int x, int y){
             Point newPos = new Point(x,y);
             carPositions.put(car,newPos);
-            car.setY(y);
-            car.setX(x);
     }
 
     // Initializes the panel and reads the images

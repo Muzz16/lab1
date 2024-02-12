@@ -31,7 +31,7 @@ public class CarController {
         CarController cc = new CarController();
 
         Car v0 = new Volvo240();
-        v0.setY(50);
+        v0.setY(0);
         v0.setX(0);
         cc.cars.add(v0);
 
@@ -70,7 +70,15 @@ public class CarController {
                 }
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
+
+                if(car instanceof Volvo240){
+                    if(car.getX() >= frame.drawPanel.volvoWorkshopPoint.x){
+                        car.stopEngine();
+                    }
+                }
+
             }
+
         }
     }
 
@@ -88,4 +96,51 @@ public class CarController {
             car.brake(brake);
         }
     }
+
+    void turboOn(){
+        for(Car car : cars){
+            if(car instanceof Saab95){
+                car.setTurboOn();
+            }
+        }
+    }
+    void turboOff(){
+        for(Car car : cars){
+            if(car instanceof Saab95){
+                car.setTurboOff();
+            }
+        }
+    }
+
+    void liftBed(){
+        for(Car car : cars){
+            if(car instanceof Scania){
+                car.increaseAngle(10);
+            }
+        }
+    }
+
+    void lowerBed(){
+        for(Car car : cars){
+            if(car instanceof Scania){
+                car.decreaseAngle(10);
+            }
+        }
+    }
+
+    void start(){
+        for(Car car : cars){
+            if(!(car.currentSpeed > 0)) {
+                car.startEngine();
+            }
+            else throw new IllegalArgumentException("Engine is already on");
+        }
+    }
+
+    void stop(){
+        for(Car car : cars){
+            car.stopEngine();
+        }
+    }
+
 }

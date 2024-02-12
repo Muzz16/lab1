@@ -23,7 +23,7 @@ public abstract class Trucks extends Car{
 
     @Override
     public double speedFactor() {
-        return enginePower * 0.01 * 2;
+        return enginePower * 0.01;
     }
 
 }
