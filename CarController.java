@@ -31,7 +31,7 @@ public class CarController {
         CarController cc = new CarController();
 
         Car v0 = new Volvo240();
-        v0.setY(0);
+        v0.setY(50);
         v0.setX(0);
         cc.cars.add(v0);
 
