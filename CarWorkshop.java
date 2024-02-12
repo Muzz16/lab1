@@ -26,4 +26,8 @@ public class CarWorkshop<T extends Car> implements hasCarStack<T>{
         return carsInWorkshop.removeCar();
     }
 
+    public String showWorkshop(){
+        return carsInWorkshop.toString();
+    }
+
 }
