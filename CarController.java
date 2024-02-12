@@ -72,8 +72,8 @@ public class CarController {
                 frame.drawPanel.repaint();
 
                 if(car instanceof Volvo240){
-                    if(car.getX() >= frame.drawPanel.volvoWorkshopPoint.x){
-                        car.stopEngine();
+                    if(car.getX() >= frame.drawPanel.volvoWorkshopPoint.x && car.getX() < frame.drawPanel.volvoWorkshopPoint.x+10){
+                        car.currentSpeed = 0;
                     }
                 }
 
