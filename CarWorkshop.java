@@ -1,7 +1,5 @@
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import java.util.stream.Stream;
+
 public class CarWorkshop<T extends Car> implements hasCarStack<T>{
 
     private CarStack<T> carsInWorkshop;
@@ -24,10 +22,6 @@ public class CarWorkshop<T extends Car> implements hasCarStack<T>{
     @Override
     public T removeCar() {
         return carsInWorkshop.removeCar();
-    }
-
-    public String showWorkshop(){
-        return carsInWorkshop.toString();
     }
 
 }

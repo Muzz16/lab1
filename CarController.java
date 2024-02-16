@@ -74,12 +74,17 @@ public class CarController {
 
                 if(car instanceof Volvo240){
                     if(car.getX() >= frame.drawPanel.volvoWorkshopPoint.x && car.getX() < frame.drawPanel.volvoWorkshopPoint.x+10){
+                        car.currentSpeed = 0;
                         if(!volvoWorkshop.contains((Volvo240) car)) {
                             volvoWorkshop.add((Volvo240) car);
-                            car.currentSpeed = 0;
-                            System.out.println(volvoWorkshop.showWorkshop());
                         }
                     }
+                    else{
+                        if(volvoWorkshop.contains((Volvo240) car)){
+                            volvoWorkshop.removeCar();
+                        }
+                    }
+
                 }
 
             }
