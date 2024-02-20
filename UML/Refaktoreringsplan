@@ -1,12 +1,6 @@
-Car?
-1. Skapa klassen CarMovement. Flytta över alla rörelserelaterade funktioner från Car till CarMovement
-2. Skapa klassen CarPosDir. Flytta över alla funktioner som hanterar position och riktning till CarPosDir från Car
-3. Lägga CarMovement instansvariabel i Car och CarPosDir instansvariabel i CarMovement.
-4. Uppdatera Car’s metoder för delegering av rörelserelaterade åtgärder och positionsrelaterade åtgärder
-5. Uppdatera befintliga metodanrop
 
 
-CarController
+CarController & GraphicsController
 1. Skapa klassen CarBrain. Flytta över relevanta funktioner från Car till CarBrain
 2. Skapa en klass GraphicsController. Flytta över relevanta funktioner, dvs det som ritar ut.
 3. Ändra hur de olika beroende är enligt vår nya UML-diagram
