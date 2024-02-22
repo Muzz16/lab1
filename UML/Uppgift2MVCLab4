@@ -1,0 +1,7 @@
+1.
+Från början tog CarController hand om både main-metoden och TimeListener, dvs utförde beräkningar. I CarController
+vill vi göra den "thin".
+
+2.
+Vi tänkte skapa en ny klass, vi kallar den för CarBrain, detta är "applikationen". Så nu är vår CarController mycket
+mindre, eller "thin", som nu tar hand om metoderna för när något klickas på vyn, dvs knapparna.
