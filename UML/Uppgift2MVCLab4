@@ -4,4 +4,6 @@ vill vi göra den "thin".
 
 2.
 Vi tänkte skapa en ny klass, vi kallar den för CarBrain, detta är "applikationen". Så nu är vår CarController mycket
-mindre, eller "thin", som nu tar hand om metoderna för när något klickas på vyn, dvs knapparna.
+mindre, eller "thin", som nu tar hand om metoderna för när något klickas på vyn, dvs knapparna. Vår view tar även hand
+om för mycket "beräkningar". Vi vill göra vår view "dummare", så för att göra det flyttar vi över alla knappar som
+handlar om "ren input" till controller som ska ta hand om det.
