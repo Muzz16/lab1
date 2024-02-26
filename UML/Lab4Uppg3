@@ -1,0 +1,10 @@
+Factory Method:
+    Vi kan skapa en CarFactory för våra bilar istället för att direkt instansiera dem i CarBrain. Om vi skapar
+    denna klass så separerar skapandet av bilar från klientkoden. MODULÄRHET! SOC!
+
+State:
+    State använder vi redan i exempelvis Car-klassen. Exempelvis är TurnLeft() ett exempel på STATE, då den ändrar
+    "direction" varje gång Turnleft() kallas på. Genom att använda olika states så ändras beteendet för bilen rör sig.
+
+
+

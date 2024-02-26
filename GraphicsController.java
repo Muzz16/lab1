@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-class GraphicsFactory extends JPanel{
+class GraphicsController extends JPanel{
     HashMap<Car, BufferedImage> carImages = new HashMap<>();
     HashMap<Car, Point> carPositions = new HashMap<>();
     BufferedImage volvoWorkshopImage;

@@ -1,21 +1,17 @@
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 // This panel represents the animated part of the view with the car images.
 
 public class DrawPanel extends JPanel {
-    GraphicsFactory gf;
+    GraphicsController gc;
     ArrayList<Car> cars;
 
     void moveit(Car car, int x, int y) {
         Point newPos = new Point(x, y);
-        gf.carPositions.put(car, newPos);
+        gc.carPositions.put(car, newPos);
     }
 
     // Initializes the panel and reads the images
@@ -23,11 +19,11 @@ public class DrawPanel extends JPanel {
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.pink);
-        this.gf = new GraphicsFactory();
+        this.gc = new GraphicsController();
         this.cars = cars;
 
         try {
-            gf.loadImages(cars);
+            gc.loadImages(cars);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -35,7 +31,7 @@ public class DrawPanel extends JPanel {
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        gf.drawCars(g, cars);
-        gf.drawWorkshop(g);
+        gc.drawCars(g, cars);
+        gc.drawWorkshop(g);
     }
 }

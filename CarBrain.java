@@ -13,17 +13,17 @@ public class CarBrain {
 
     public void startProgram(){
 
-        Car v0 = new Volvo240();
+        Car v0 = CarFactory.createCar(new Volvo240());
         v0.setY(50);
         v0.setX(0);
         cc.cars.add(v0);
 
-        Car v1 = new Saab95();
+        Car v1 = CarFactory.createCar(new Saab95());
         v1.setY(150);
         v1.setX(0);
         cc.cars.add(v1);
 
-        Car v2 = new Scania();
+        Car v2 = CarFactory.createCar(new Scania());
         v2.setY(250);
         v2.setX(0);
         cc.cars.add(v2);
@@ -51,7 +51,7 @@ public class CarBrain {
                 cc.drawPanel.repaint();
 
                 if(car instanceof Volvo240){
-                    if(car.getX() >= cc.drawPanel.gf.volvoWorkshopPoint.x && car.getX() < cc.drawPanel.gf.volvoWorkshopPoint.x+10){
+                    if(car.getX() >= cc.drawPanel.gc.volvoWorkshopPoint.x && car.getX() < cc.drawPanel.gc.volvoWorkshopPoint.x+10){
                         car.currentSpeed = 0;
                         if(!cc.volvoWorkshop.contains((Volvo240) car)) {
                             cc.volvoWorkshop.add((Volvo240) car);
