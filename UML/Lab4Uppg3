@@ -6,5 +6,12 @@ State:
     State använder vi redan i exempelvis Car-klassen. Exempelvis är TurnLeft() ett exempel på STATE, då den ändrar
     "direction" varje gång Turnleft() kallas på. Genom att använda olika states så ändras beteendet för bilen rör sig.
 
+Composite:
+    Vi använder det inte alls. OCH VI VILL INTE EFTERSOM VI TYCKER DET INTE PASSAR!
 
+
+Observer:
+    Vi använder ingen observer ännu. Men vi tänker att vi kan skapa en collisionObserver som tar hand om kollision
+    för när volvo kolliderar med volvo workshopen. Genom att göra en observer för detta skapar LOOSE COUPLING så att
+    observatörer och observabla objekt kan vara oberoende av varandra.
 

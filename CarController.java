@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 
 /*
@@ -22,8 +23,9 @@ public class CarController extends JFrame{
     // The frame that represents this instance View of the MVC pattern
     // A list of cars, modify if needed
     DrawPanel drawPanel;
+    Random rand = new Random();
 
-    protected static final int X = 800;
+    protected static final int X = 1000;
     protected static final int Y = 800;
 
     JButton gasButton = new JButton("Gas");
@@ -33,6 +35,8 @@ public class CarController extends JFrame{
     JButton liftBedButton = new JButton("Scania Lift Bed");
     JButton lowerBedButton = new JButton("Lower Lift Bed");
 
+    JButton AddCarButton = new JButton("Add Car");
+    JButton RemoveCarButton = new JButton("Remove Car");
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
     JPanel controlPanel = new JPanel();
@@ -78,6 +82,8 @@ public class CarController extends JFrame{
         controlPanel.add(brakeButton, 3);
         controlPanel.add(turboOffButton, 4);
         controlPanel.add(lowerBedButton, 5);
+        controlPanel.add(AddCarButton, 6);
+        controlPanel.add(RemoveCarButton, 7);
         controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
         this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
@@ -93,6 +99,7 @@ public class CarController extends JFrame{
         stopButton.setForeground(Color.black);
         stopButton.setPreferredSize(new Dimension(X/5-15,200));
         this.add(stopButton);
+
 
         // This actionListener is for the gas button only
         // TODO: Create more for each component as necessary
@@ -149,6 +156,20 @@ public class CarController extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 stop();
+            }
+        });
+
+        AddCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addCar();
+            }
+        });
+
+        RemoveCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                removeCar();
             }
         });
 
@@ -229,4 +250,23 @@ public class CarController extends JFrame{
         }
     }
 
-}
+    void addCar(){
+        if(cars.size() < 8){
+            Car v0 = CarFactory.createCar(new Volvo240());
+            v0.setY(50);
+            v0.setX(0);
+            CarController cc;
+            cars.add(v0);
+        }
+        else throw new IllegalArgumentException("Too many cars, full");
+    }
+
+    void removeCar(){
+        if(cars.size() > 0){
+
+        }
+        else throw new IllegalArgumentException("There are no cars");
+        }
+    }
+
+

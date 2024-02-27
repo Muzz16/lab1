@@ -16,14 +16,12 @@ import java.awt.event.ActionListener;
 public class CarView extends JFrame{
 
     // The controller member
-    protected static final int X = 800;
-    protected static final int Y = 800;
     CarController carC;
 
     // Constructor
     public CarView(String framename, CarController cc){
         this.carC = cc;
-        carC.drawPanel = new DrawPanel(X, Y-240, carC.cars);
+        carC.drawPanel = new DrawPanel(CarController.X, CarController.Y-240, carC.cars);
         carC.initComponents(framename);
     }
 
