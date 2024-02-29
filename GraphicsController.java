@@ -11,15 +11,27 @@ class GraphicsController extends JPanel{
     HashMap<Car, Point> carPositions = new HashMap<>();
     BufferedImage volvoWorkshopImage;
     Point volvoWorkshopPoint = new Point(300, 50);
+    ArrayList<String> imagePaths = new ArrayList<>();
 
     public void loadImages(ArrayList<Car> cars) throws IOException {
-        ArrayList<String> imagePaths = new ArrayList<>();
+        imagePaths.clear();
+        carImages.clear();
+        carPositions.clear();
+
         imagePaths.add("pics/Volvo240.jpg");
         imagePaths.add("pics/Saab95.jpg");
         imagePaths.add("pics/Scania.jpg");
 
-        for (int i = 0; i < imagePaths.size(); i++) {
-            carImages.put(cars.get(i), ImageIO.read(getClass().getResourceAsStream(imagePaths.get(i))));
+        for (Car car : cars) {
+            if(car instanceof Volvo240) {
+                carImages.put(car, ImageIO.read(getClass().getResourceAsStream(imagePaths.get(0))));
+            }
+            if(car instanceof Saab95){
+                carImages.put(car, ImageIO.read(getClass().getResourceAsStream(imagePaths.get(1))));
+            }
+            if(car instanceof Scania){
+                carImages.put(car, ImageIO.read(getClass().getResourceAsStream(imagePaths.get(2))));
+            }
         }
         volvoWorkshopImage = ImageIO.read(getClass().getResourceAsStream("pics/VolvoBrand.jpg"));
 
@@ -27,6 +39,9 @@ class GraphicsController extends JPanel{
         for (int i = 0; i < cars.size(); i++) {
             carPositions.put(cars.get(i), new Point(0, pixels));
             pixels += 100;
+            if(pixels > getHeight()){
+                pixels = 0;
+            }
         }
     }
 

@@ -6,30 +6,29 @@ public class CarBrain {
     private final int delay = 50;
     protected Timer timer = new Timer(delay, new TimerListener());
     CarController cc = new CarController();
-    CarView frame;
     public static void main(String[] args) {
         new CarBrain().startProgram();
     }
 
     public void startProgram(){
 
-        Car v0 = CarFactory.createCar(new Volvo240());
+        Car v0 = CarFactory.createVolvo240();
         v0.setY(50);
         v0.setX(0);
         cc.cars.add(v0);
 
-        Car v1 = CarFactory.createCar(new Saab95());
+        Car v1 = CarFactory.createSaab95();
         v1.setY(150);
         v1.setX(0);
         cc.cars.add(v1);
 
-        Car v2 = CarFactory.createCar(new Scania());
-        v2.setY(250);
+        Car v2 = CarFactory.createScania();
+        v2.setY(450);
         v2.setX(0);
         cc.cars.add(v2);
 
         // Start a new view and send a reference of self
-        frame = new CarView("CarSim 1.0", cc);
+        CarView frame = new CarView("CarSim 1.0", cc);
 
         // Start the timer
         timer.start();
@@ -51,7 +50,7 @@ public class CarBrain {
                 cc.drawPanel.repaint();
 
                 if(car instanceof Volvo240){
-                    if(car.getX() >= cc.drawPanel.gc.volvoWorkshopPoint.x && car.getX() < cc.drawPanel.gc.volvoWorkshopPoint.x+10){
+                    if((car.getX() >= cc.drawPanel.gc.volvoWorkshopPoint.x && car.getX() < cc.drawPanel.gc.volvoWorkshopPoint.x + 10) && car.getY() == cc.drawPanel.gc.volvoWorkshopPoint.y){
                         car.currentSpeed = 0;
                         if(!cc.volvoWorkshop.contains((Volvo240) car)) {
                             cc.volvoWorkshop.add((Volvo240) car);

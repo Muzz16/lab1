@@ -1,9 +1,11 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -23,7 +25,8 @@ public class CarController extends JFrame{
     // The frame that represents this instance View of the MVC pattern
     // A list of cars, modify if needed
     DrawPanel drawPanel;
-    Random rand = new Random();
+    Random rand = new Random(3);
+    Random randY = new Random();
 
     protected static final int X = 1000;
     protected static final int Y = 800;
@@ -250,20 +253,32 @@ public class CarController extends JFrame{
         }
     }
 
-    void addCar(){
-        if(cars.size() < 8){
-            Car v0 = CarFactory.createCar(new Volvo240());
-            v0.setY(50);
-            v0.setX(0);
-            CarController cc;
-            cars.add(v0);
+    void addCar() {
+        Car volvo = CarFactory.createVolvo240();
+        Car saab = CarFactory.createSaab95();
+        Car scania = CarFactory.createScania();
+        Car[] possibleCars = new Car[]{volvo, saab, scania};
+
+        if (cars.size() < 10) {
+            Car newCar = possibleCars[rand.nextInt(3)];
+            int randomYpos = randY.nextInt(450);
+            newCar.setY(randomYpos);
+            cars.add(newCar);
+            newCar.startEngine();
+
+            drawPanel.gc.carPositions.put(newCar,new Point(0,randomYpos));
+
+            drawPanel.updateCars(cars);
+
+        } else {
+            throw new IllegalArgumentException("Too many cars, full");
         }
-        else throw new IllegalArgumentException("Too many cars, full");
     }
 
     void removeCar(){
         if(cars.size() > 0){
-
+            Car removedcar = cars.remove(0);
+            drawPanel.gc.carPositions.remove(removedcar);
         }
         else throw new IllegalArgumentException("There are no cars");
         }

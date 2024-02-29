@@ -34,4 +34,14 @@ public class DrawPanel extends JPanel {
         gc.drawCars(g, cars);
         gc.drawWorkshop(g);
     }
+
+    public void updateCars(ArrayList<Car> newCars) {
+        this.cars = newCars;
+        try {
+            gc.loadImages(newCars);
+        } catch (IOException e) {
+
+        }
+        repaint();
+    }
 }
