@@ -266,9 +266,9 @@ public class CarController extends JFrame{
             cars.add(newCar);
             newCar.startEngine();
 
-            drawPanel.gc.carPositions.put(newCar,new Point(0,randomYpos));
-
             drawPanel.updateCars(cars);
+            newCar.addObserver(drawPanel);
+            cars.add(newCar);
 
         } else {
             throw new IllegalArgumentException("Too many cars, full");

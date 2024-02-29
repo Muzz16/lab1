@@ -3,17 +3,12 @@ Factory Method:
     denna klass så separerar skapandet av bilar från klientkoden. MODULÄRHET! SOC!
 
 State:
-
+    Vi hade inte state-pattern från början. Men vi tänker att vi kan implementera det genom att skapa en RampClosedState
+    och RampOpenState som implementerar hasTruckRamp interfacet.
 
 Composite:
     Vi har ett hierarki där alla våra fordon utgår från vår abstrakta klass Car. Dvs att det ser ut som ett träd
     där flera objekt utgår från en "rot" och bygger vidare.
 
-
-    Vi använder det inte alls. EFTERSOM VI TYCKER DET INTE PASSAR! Det hade kunnat varit lämpligt att använda
-    composite-pattern exempelvis om vi hade haft flera olika typer av volvo-klasser. Nu har vi inte det och då behövs
-    inte composite-pattern.
-
-
 Observer:
-
+    Vi hade ingen observer från början. Men vi tänkte vi kunde skapa en observer

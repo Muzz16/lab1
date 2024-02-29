@@ -1,3 +1,9 @@
 public interface hasTruckRamp {
-    boolean rampSwitch();
+    boolean isRampClosed();
+
+    void lowerRamp();
+
+    void raiseRamp();
+
+    void setRampState(hasTruckRamp state);
 }
