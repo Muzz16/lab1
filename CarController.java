@@ -279,6 +279,7 @@ public class CarController extends JFrame{
         if(cars.size() > 0){
             Car removedcar = cars.remove(0);
             drawPanel.gc.carPositions.remove(removedcar);
+            drawPanel.gc.carImages.remove(removedcar);
         }
         else throw new IllegalArgumentException("There are no cars");
         }

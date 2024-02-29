@@ -3,15 +3,17 @@ Factory Method:
     denna klass så separerar skapandet av bilar från klientkoden. MODULÄRHET! SOC!
 
 State:
-    State använder vi redan i exempelvis Car-klassen. Exempelvis är TurnLeft() ett exempel på STATE, då den ändrar
-    "direction" varje gång Turnleft() kallas på. Genom att använda olika states så ändras beteendet för bilen rör sig.
+
 
 Composite:
-    Vi använder det inte alls. OCH VI VILL INTE EFTERSOM VI TYCKER DET INTE PASSAR!
+    Vi har ett hierarki där alla våra fordon utgår från vår abstrakta klass Car. Dvs att det ser ut som ett träd
+    där flera objekt utgår från en "rot" och bygger vidare.
+
+
+    Vi använder det inte alls. EFTERSOM VI TYCKER DET INTE PASSAR! Det hade kunnat varit lämpligt att använda
+    composite-pattern exempelvis om vi hade haft flera olika typer av volvo-klasser. Nu har vi inte det och då behövs
+    inte composite-pattern.
 
 
 Observer:
-    Vi använder ingen observer ännu. Men vi tänker att vi kan skapa en collisionObserver som tar hand om kollision
-    för när volvo kolliderar med volvo workshopen. Genom att göra en observer för detta skapar LOOSE COUPLING så att
-    observatörer och observabla objekt kan vara oberoende av varandra.
 

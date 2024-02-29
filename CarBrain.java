@@ -49,17 +49,22 @@ public class CarBrain {
                 // repaint() calls the paintComponent method of the panel
                 cc.drawPanel.repaint();
 
-                if(car instanceof Volvo240){
-                    if((car.getX() >= cc.drawPanel.gc.volvoWorkshopPoint.x && car.getX() < cc.drawPanel.gc.volvoWorkshopPoint.x + 10) && car.getY() == cc.drawPanel.gc.volvoWorkshopPoint.y){
-                        car.currentSpeed = 0;
-                        if(!cc.volvoWorkshop.contains((Volvo240) car)) {
-                            cc.volvoWorkshop.add((Volvo240) car);
-                        }
+                VolvoOnCarCollision(car);
+
+            }
+        }
+
+        public void VolvoOnCarCollision(Car car) {
+            if(car instanceof Volvo240){
+                if((car.getX() >= cc.drawPanel.gc.volvoWorkshopPoint.x && car.getX() < cc.drawPanel.gc.volvoWorkshopPoint.x + 10) && car.getY() == cc.drawPanel.gc.volvoWorkshopPoint.y){
+                    car.currentSpeed = 0;
+                    if(!cc.volvoWorkshop.contains((Volvo240) car)) {
+                        cc.volvoWorkshop.add((Volvo240) car);
                     }
-                    else{
-                        if(cc.volvoWorkshop.contains((Volvo240) car)){
-                            cc.volvoWorkshop.removeCar();
-                        }
+                }
+                else{
+                    if(cc.volvoWorkshop.contains((Volvo240) car)){
+                        cc.volvoWorkshop.removeCar();
                     }
                 }
             }
