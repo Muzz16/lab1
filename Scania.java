@@ -37,4 +37,17 @@ public class Scania extends Trucks implements hasTruckBed{
         }
         return false;
     }
+
+    @Override
+    public void startEngine(){
+        if(rampAngle > 0){
+            currentSpeed = 0;
+            engineStatus = false;
+            throw new IllegalArgumentException("Can't move while ramp is down");
+        }
+        else{
+            currentSpeed = 0.1;
+            engineStatus = true;
+        }
+    }
 }

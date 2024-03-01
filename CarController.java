@@ -225,7 +225,7 @@ public class CarController extends JFrame{
     void liftBed(){
         for(Car car : cars){
             if(car instanceof Scania){
-                car.increaseAngle(10);
+                car.decreaseAngle(10);
             }
         }
     }
@@ -233,7 +233,7 @@ public class CarController extends JFrame{
     void lowerBed(){
         for(Car car : cars){
             if(car instanceof Scania){
-                car.decreaseAngle(10);
+                car.increaseAngle(10);
             }
         }
     }
