@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
  * TODO: Write more actionListeners and wire the rest of the buttons
  **/
 
-public class CarView extends JFrame{
+public class CarView extends JFrame implements CarObserver{
 
     // The controller member
     CarController carC;
@@ -25,7 +25,9 @@ public class CarView extends JFrame{
         carC.initComponents(framename);
     }
 
-    // Sets everything in place and fits everything
-    // TODO: Take a good look and make sure you understand how these methods and components work
+    @Override
+    public void carUpdated() {
+        repaint();
+    }
 
 }

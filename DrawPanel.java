@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 // This panel represents the animated part of the view with the car images.
 
-public class DrawPanel extends JPanel implements CarObserver {
+public class DrawPanel extends JPanel {
     GraphicsController gc;
     ArrayList<Car> cars;
 
@@ -45,8 +45,4 @@ public class DrawPanel extends JPanel implements CarObserver {
         repaint();
     }
 
-    @Override
-    public void carUpdated(Car car) {
-        repaint();
-    }
 }

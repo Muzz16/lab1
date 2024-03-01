@@ -4,7 +4,6 @@ import java.util.List;
 
 public abstract class Car implements Movable{
 
-    private List<CarObserver> observers = new ArrayList<>();
     private final int nrDoors; // Number of doors on the car
     protected final double enginePower; // Engine power of the car
     private Color color; // Color of the car
@@ -24,16 +23,6 @@ public abstract class Car implements Movable{
         this.position = new Point(0,0);
         // Initialize position at (0, 0)
         this.engineStatus = false;
-    }
-
-    public void addObserver(CarObserver observer){
-        observers.add(observer);
-    }
-
-    private void notifyObserver(){
-        for(CarObserver observer : observers){
-            observer.carUpdated(this);
-        }
     }
 
     public int getNrDoors(){
@@ -93,7 +82,6 @@ public abstract class Car implements Movable{
             default:
                 break;
         }
-        notifyObserver();
     }
 
     public double speedFactor(){
@@ -153,12 +141,10 @@ public abstract class Car implements Movable{
 
     public void turnLeft(){
         direction = Directions.fromValue((direction.getValue() + 3) % 4);
-        notifyObserver();
     }
 
     public void turnRight(){
         direction = Directions.fromValue((direction.getValue() + 1) % 4);
-        notifyObserver();
     }
 
     public double getX() {

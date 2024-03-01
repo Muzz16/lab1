@@ -267,8 +267,6 @@ public class CarController extends JFrame{
             newCar.startEngine();
 
             drawPanel.updateCars(cars);
-            newCar.addObserver(drawPanel);
-            cars.add(newCar);
 
         } else {
             throw new IllegalArgumentException("Too many cars, full");
@@ -280,6 +278,8 @@ public class CarController extends JFrame{
             Car removedcar = cars.remove(0);
             drawPanel.gc.carPositions.remove(removedcar);
             drawPanel.gc.carImages.remove(removedcar);
+
+            drawPanel.updateCars(cars);
         }
         else throw new IllegalArgumentException("There are no cars");
         }

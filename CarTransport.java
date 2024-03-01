@@ -1,14 +1,13 @@
 import java.awt.*;
+import java.util.Objects;
 
 public class CarTransport extends Trucks implements hasTruckRamp,hasCarStack<Car>{
-    protected boolean rampIsClosed;
     private int rangeDiff = 5;
     private CarStack<Car> carStack;
     private hasTruckRamp state;
 
     public CarTransport() {
         super(2,140,"CarTransport",Color.black);
-        this.rampIsClosed = true;
         carStack = new CarStack<>(4);
         this.state = new RampClosedState();
     }
@@ -46,7 +45,7 @@ public class CarTransport extends Trucks implements hasTruckRamp,hasCarStack<Car
 
     @Override
     public boolean canMove(){
-        return rampIsClosed;
+        return Objects.equals(state, new RampClosedState());
     }
 
     @Override

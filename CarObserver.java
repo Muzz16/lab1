@@ -1,3 +1,3 @@
 public interface CarObserver {
-    void carUpdated(Car car);
+    void carUpdated();
 }

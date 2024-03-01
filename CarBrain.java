@@ -1,8 +1,12 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CarBrain {
+
+    private List<CarObserver> observers = new ArrayList<>();
     private final int delay = 50;
     protected Timer timer = new Timer(delay, new TimerListener());
     CarController cc = new CarController();
@@ -13,18 +17,12 @@ public class CarBrain {
     public void startProgram(){
 
         Car v0 = CarFactory.createVolvo240();
-        v0.setY(50);
-        v0.setX(0);
         cc.cars.add(v0);
 
         Car v1 = CarFactory.createSaab95();
-        v1.setY(150);
-        v1.setX(0);
         cc.cars.add(v1);
 
         Car v2 = CarFactory.createScania();
-        v2.setY(450);
-        v2.setX(0);
         cc.cars.add(v2);
 
         // Start a new view and send a reference of self
@@ -32,6 +30,7 @@ public class CarBrain {
 
         // Start the timer
         timer.start();
+        addObserver(frame);
     }
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
@@ -52,6 +51,7 @@ public class CarBrain {
                 VolvoOnCarCollision(car);
 
             }
+            notifyObserver();
         }
 
         public void VolvoOnCarCollision(Car car) {
@@ -70,5 +70,16 @@ public class CarBrain {
             }
         }
     }
+
+    public void addObserver(CarObserver observer){
+        observers.add(observer);
+    }
+
+    private void notifyObserver(){
+        for(CarObserver observer : observers){
+            observer.carUpdated();
+        }
+    }
+
 
 }
