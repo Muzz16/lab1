@@ -1,14 +1,15 @@
 Factory Method:
     Vi kan skapa en CarFactory för våra bilar istället för att direkt instansiera dem i CarBrain. Om vi skapar
-    denna klass så separerar skapandet av bilar från klientkoden. MODULÄRHET! SOC!
+    denna klass så separerar skapandet av bilar från klientkoden. Förbättrar SRP och OCP! Reducerar coupling!
 
 State:
     Vi hade inte state-pattern från början. Men vi tänker att vi kan implementera det genom att skapa en RampClosedState
-    och RampOpenState som implementerar hasTruckRamp interfacet.
+    och RampOpenState som implementerar hasTruckRamp interfacet. Förbättrar SRP och OCP!
 
 Composite:
     Vi har ett hierarki där alla våra fordon utgår från vår abstrakta klass Car. Dvs att det ser ut som ett träd
-    där flera objekt utgår från en "rot" och bygger vidare.
+    där flera objekt utgår från en "rot" och bygger vidare. Förbättrar OCP.
 
 Observer:
-    Vi hade ingen observer från början. Men vi tänkte vi kunde skapa en observer
+    Vi hade ingen observer från början. Men vi tänkte vi kunde skapa en observer som heter CarObserver. Denna tar
+    information från CarBrain (applikationen) och uppdaterar viewn. Förbättrar OCP! Reducerar coupling.
